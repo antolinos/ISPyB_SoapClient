@@ -1,0 +1,19 @@
+#include "ispyb.h"
+#include "qtsoap.h"
+#include "qjson.h"
+
+#include <QtCore>
+#include <QtNetwork>
+#include <QAbstractMessageHandler>
+
+
+main() {
+	qDebug( "Start" );
+	QString url = QString("http://ispyb-test.embl-hamburg.de:8080/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
+
+	qDebug(url);
+
+	ispyb().setUrl(url);
+
+	qDebug( "End" );
+}

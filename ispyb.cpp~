@@ -1,7 +1,7 @@
 
 #include "ispyb.h"
 #include "qtsoap.h"
-#include "qjson/qjson.h"
+#include "qjson.h"
 
 #include <QtCore>
 #include <QtNetwork>
@@ -64,9 +64,9 @@ QString ISPyB::url() const {
 void ISPyB::setUrl(const QString& url) {
   mUrl = url;
 
+  qDebug( "Start" );
   messageHandler()->message(QtDebugMsg,
-                            QString("Set URL: '%1'")
-                                    .arg(url),
+                            QString("Set URL: '%1'").arg(url),
                             objectName());
 }
 

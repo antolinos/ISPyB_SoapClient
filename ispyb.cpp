@@ -63,10 +63,8 @@ QString ISPyB::url() const {
 
 void ISPyB::setUrl(const QString& url) {
   mUrl = url;
-
   messageHandler()->message(QtDebugMsg,
-                            QString("Set URL: '%1'")
-                                    .arg(url),
+                            QString("Set URL: '%1'").arg(url),
                             objectName());
 }
 
