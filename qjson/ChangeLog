@@ -1,0 +1,8 @@
+2015-02-19  Daniel Franke  <franke@embl-hamburg.de>
+
+	* CMakeLists.txt: Define QJSON_MAKEDLL to fix Windows builds.
+
+2015-01-28  Daniel Franke  <franke@embl-hamburg.de>
+
+	* Inital import of qjson-0.8.1.
+
