@@ -3168,19 +3168,31 @@ void QtSoapHttpTransport::submitRequest(QtSoapMessage &request, const QString &p
     networkReq.setUrl(url);
 
 
-/*!
-QString env = "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+    soapResponse.clear();
+/* 
+   qDebug() << "TESTING";
+   QString env = "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">"
               "<Body>"
               "  <getProposalsByLoginName xmlns=\"http://ispyb.ejb3.webservices.biosaxs\">"
               "    <userName xmlns=\"\">franke</userName>"
 	      "</getProposalsByLoginName>"
 	      "</Body>"
 	      "</Envelope>";
+
+
+   QString env = "<Envelope>"
+      	 "</Envelope>";
+
+    qDebug() << "ENVELOPE";
+    qDebug() << env.toUtf8().constData();
+    qDebug() << "ENVELOPE END";
+    networkRep = networkMgr.post(networkReq, env.toUtf8().constData());
+
+    qDebug() << "TESTING END";
 */
+
     qDebug() << request.toXmlString().toUtf8().constData();
-    soapResponse.clear();
-     networkRep = networkMgr.post(networkReq, request.toXmlString().toUtf8().constData());
-//    networkRep = networkMgr.post(networkReq, env.toUtf8().constData());
+    networkRep = networkMgr.post(networkReq, request.toXmlString().toUtf8().constData());
 }
 
 

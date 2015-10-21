@@ -635,8 +635,19 @@ bool ISPyB::submit(QtSoapMessage& request) {
 QVariant ISPyB::submitAndWaitForResponse(QtSoapMessage& request) {
   QtSoapHttpTransport soap(this);
   soap.setHost(mUrl.host());
+
+
+  qDebug() << mUserName;
+  qDebug() << mPassword;
+
   soap.setUser(mUserName);
   soap.setPassword(mPassword);
+
+  //qDebug() << "REQUEST";
+  //qDebug() << request.toXmlString();
+  //qDebug() << "REQUEST END";
+
+
   soap.submitRequest(request, mUrl.path());
 
   QEventLoop synchronize;
@@ -654,7 +665,8 @@ QVariant ISPyB::submitAndWaitForResponse(QtSoapMessage& request) {
         break;
 
       default:
-qDebug() << response.toXmlString();
+	qDebug() << "ERROR";
+	qDebug() << response.toXmlString();
         messageHandler()->message(QtCriticalMsg,
                                   QString("Network error querying information: '%1'")
                                          .arg(response.faultString().toString()),

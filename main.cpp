@@ -34,7 +34,15 @@ int main(int argc, char *argv[])
 
 	qDebug( "Start" );
         ispyb().setMessageHandler(new MessageHandler());
-	ispyb().setUrl("http://ispyvalid.esrf.fr:8080/ispyb/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
-	ispyb().getProposals("test");
+
+	/** Test server JBOSS6: there is a permission denied problem because of certificate but there is communication then it works **/
+//	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8086/ispyb-ejb3/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
+
+	ispyb().setUserName("mx0000");
+	ispyb().setPassword("test");
+//	ispyb().setUrl("http://ispyb-test:8080/whatever?wsdl");
+	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8080/whatever?wsdl");
+//	ispyb().setUrl("http://ispyvalid.esrf.fr:8080/ispyb/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
+	ispyb().getProposals("mx415");
 	qDebug( "End" );
 }
