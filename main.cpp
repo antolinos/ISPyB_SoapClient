@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
 	ispyb().setPort(8080);
 	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8086/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
 	ispyb().getProposals("mx9999").toString();
-	qDebug() << (ispyb().getProposals("mx0000").toString());
 	qDebug( "End" );
 
 
@@ -70,9 +69,8 @@ int main(int argc, char *argv[])
 	ispyb().setUserName("mx0000");
 	ispyb().setPassword("test");
 	ispyb().setPort(8080);
-	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8086/ispyb-ejb3/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
+	ispyb().setUrl("http://ispyb.embl-hamburg.de/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
 	ispyb().getProposals("mx9999").toString();
-	qDebug() << (ispyb().getProposals("mx0000").toString());
 	qDebug( "End" );
 
 
