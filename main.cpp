@@ -55,16 +55,25 @@ int main(int argc, char *argv[])
 	**/
 
 	
+	qDebug( "ispyb-test.embl-hamburg.de:8080 WITH ERROR" );  
+	ispyb().setUserName("mx0000");
+	ispyb().setPassword("test");
+	//ispyb().setPort(8080);
+	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8086/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
+	ispyb().getProposals("mx0000").toString();
+	qDebug( "End" );
+
+
 	qDebug( "ispyb-test.embl-hamburg.de:8080 " );  
 	ispyb().setUserName("mx0000");
 	ispyb().setPassword("test");
 	ispyb().setPort(8080);
 	ispyb().setUrl("http://ispyb-test.embl-hamburg.de:8086/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
-	ispyb().getProposals("mx9999").toString();
+	ispyb().getProposals("mx0000").toString();
 	qDebug( "End" );
 
 
-	/** Production server @Petra **/
+	/** Production server @Petra 
 	qDebug( "ispyb.embl-hamburg.de:8080 " );  
 	ispyb().setUserName("mx0000");
 	ispyb().setPassword("test");
@@ -72,6 +81,7 @@ int main(int argc, char *argv[])
 	ispyb().setUrl("http://ispyb.embl-hamburg.de/ispyb-ws/ispybWS/GenericSampleChangerBiosaxsWebService?wsdl");
 	ispyb().getProposals("mx9999").toString();
 	qDebug( "End" );
+	**/
 
 
 	/** wildfly @ESRF
