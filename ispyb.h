@@ -20,6 +20,10 @@ public:
   QString userName() const;
   void setUserName(const QString& user);
 
+  int port() const;
+  void setPort(int port);
+
+
   QString password() const;
   void setPassword(const QString& password);
 
@@ -158,6 +162,7 @@ private:
 
   QUrl mUrl;
   QString mUserName;
+  int mPort;
   QString mPassword;
   QString mProposalCode, mProposalNumber;
   QString mExperimentId;

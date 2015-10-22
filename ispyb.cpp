@@ -68,9 +68,22 @@ void ISPyB::setUrl(const QString& url) {
                             objectName());
 }
 
+int ISPyB::port() const{
+  return mPort;
+}
+
+void ISPyB::setPort(int port) {
+  mPort = port;
+  messageHandler()->message(QtDebugMsg,
+                            QString("Set Port: '%1'").arg(port),
+                            objectName());
+}
+
+
 QString ISPyB::userName() const {
   return mUserName;
 }
+
 
 void ISPyB::setUserName(const QString& userName) {
   mUserName = userName;
@@ -608,7 +621,7 @@ bool ISPyB::submit(QtSoapMessage& request) {
   QString message = request.toXmlString();
   if (!messageList.contains(message)) {
     QtSoapHttpTransport soap(this);
-    soap.setHost(mUrl.host());
+    soap.setHost(mUrl.host(), port());
     soap.setUser(mUserName);
     soap.setPassword(mPassword);
 
@@ -634,7 +647,7 @@ bool ISPyB::submit(QtSoapMessage& request) {
 
 QVariant ISPyB::submitAndWaitForResponse(QtSoapMessage& request) {
   QtSoapHttpTransport soap(this);
-  soap.setHost(mUrl.host());
+  soap.setHost(mUrl.host(), port());
 
 
   qDebug() << mUserName;
@@ -656,6 +669,12 @@ QVariant ISPyB::submitAndWaitForResponse(QtSoapMessage& request) {
   synchronize.exec();
 
   QtSoapMessage response = soap.getResponse();
+
+  qDebug() << "---------------";
+  qDebug() << "RESULT";
+  qDebug() << "---------------";
+  qDebug() << response.toXmlString().toUtf8().constData();
+  qDebug() << "---------------";
   if (response.isFault()) {
     switch (soap.networkReply()->error()) {
       case QNetworkReply::AuthenticationRequiredError:

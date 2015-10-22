@@ -3129,6 +3129,7 @@ void QtSoapHttpTransport::setHost(const QString &host, int port)
 void QtSoapHttpTransport::setHost(const QString &host, bool useSecureHTTP, int port)
 {
     url.setHost(host);
+    //port = 8086;
     url.setScheme(useSecureHTTP ? QLatin1String("https") : QLatin1String("http"));
     if (port)
         url.setPort(port);
@@ -3167,7 +3168,7 @@ void QtSoapHttpTransport::submitRequest(QtSoapMessage &request, const QString &p
     url.setPath(path);
     networkReq.setUrl(url);
 
-
+    qDebug() << url;
     soapResponse.clear();
 /* 
    qDebug() << "TESTING";
